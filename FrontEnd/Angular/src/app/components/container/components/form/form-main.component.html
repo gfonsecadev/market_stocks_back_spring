@@ -1,0 +1,89 @@
+<mat-card class="mat-elevation-z8">
+
+    <mat-toolbar color="primary">Cadastrar ação</mat-toolbar>
+
+  <mat-card-content>
+    <form [formGroup]="form" class="form"><!-- responsavel por linkar com a variavel form -->
+
+        <mat-form-field>
+          <input matInput placeholder="Nome" #name  formControlName="name"><!-- responsavel por linkar o input com a variavel  -->
+          <mat-hint align="end">{{name.value.length}}/100</mat-hint>
+          <mat-error>{{validatorService.formControlError(form,"name")}}</mat-error>
+        </mat-form-field>
+         <!-- <div class="error" *ngIf="!form.get('name')?.valid ">* Por favor insira no mínimo 3 letras</div> -->
+
+         <mat-form-field >
+          <input matInput placeholder="Preço Médio" type="number" formControlName="price_medium">
+          <mat-error>{{validatorService.formControlError(form,"price_medium")}}</mat-error>
+        </mat-form-field>
+       <!--  <div class="error" *ngIf="!form.get('price_medium')?.valid ">* Insira um valor igual ou maior que 0.1</div> -->
+
+
+        <mat-form-field>
+          <mat-label>Área de atuação</mat-label>
+          <mat-select formControlName="category"   >
+            <mat-option value="geral">Geral</mat-option>
+            <mat-option value="constr" >Construção</mat-option>
+            <mat-option value="tech" >Tecnologia</mat-option>
+            <mat-option value="agrib" >Agronegócio</mat-option>
+            <mat-option value="finance" >Finanças</mat-option>
+            <mat-option value="foodDrink" >Alimentos e Bebidas</mat-option>
+            <mat-option value="educ" >Educação</mat-option>
+            <mat-option value="eletr" >Elétrica</mat-option>
+            <mat-option value="mall" >shopping</mat-option>
+            <mat-option value="miniSteal" >Mineração e Siderúrgia</mat-option>
+
+          </mat-select>
+          <mat-error>{{validatorService.formControlError(form,"category")}}</mat-error>
+        </mat-form-field>
+
+        <mat-toolbar class="toobar-profit">
+          <mat-toolbar-row>
+            <span>Adicionar lucros recebidos</span>
+            <button mat-mini-fab (click)="addProfitField()" color="primary" aria-label="Adicionar lucro recebido">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-toolbar-row>
+        </mat-toolbar>
+
+
+
+        <div class="add-profit" formArrayName="profits"  >
+          <mat-card class="profit" *ngFor="let profit of iterarArray(); let i =index" [formGroupName]="i">
+
+            <mat-form-field class="type">
+              <mat-label>Tipo de ganho recebido</mat-label>
+              <mat-select  formControlName="type"   >
+                <mat-option value="JCP">Juros sobre capital próprio</mat-option>
+                <mat-option value="DY" >Dividendos</mat-option>
+              </mat-select>
+              <mat-error>{{validatorService.formArrayError(form,"profits",i,"type")}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput placeholder="Valor recebido" type="number" formControlName="valueDistributed">
+              <mat-error>{{validatorService.formArrayError(form,"profits",i,"valueDistributed")}}</mat-error>
+
+            </mat-form-field>
+
+            <button mat-mini-fab color="warn" (click)="deleteProfitField(i)" aria-label="Deletar campo de lucro recebido">
+              <mat-icon >delete</mat-icon>
+            </button>
+
+          </mat-card>
+
+        </div>
+       <!--  <div class="error" *ngIf="!form.get('category')?.valid ">* Por favor escolha uma opção</div> -->
+
+
+        <mat-card-actions>
+<!--           <button [disabled]="!form.valid"  mat-raised-button color="primary" (click)="submitForm()" >Cadastrar</button>
+ -->          <button   mat-raised-button color="primary" (click)="submitForm()" >Cadastrar</button>
+          <button  mat-raised-button color="warn" (click)="backPag()">Cancelar</button>
+        </mat-card-actions>
+
+      </form>
+  </mat-card-content>
+
+</mat-card>
+

@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+@include mat.core();
+//Deve ser incluido apenas uma vez independente da quantidade de temas
+
+// Aqui são as variaveis com cores customizadas
+$my-primary:mat.define-palette(mat.$indigo-palette,500);
+$my-accent:mat.define-palette(mat.$pink-palette,700);
+
+// Depois de criar suas cores vc pode criar um tema com as 3 cores
+// Um tema tem 3 cores (primary, accent ou secondary e warm)
+$my-theme: mat.define-light-theme((
+  color:(
+    primary: $my-primary,
+    accent: $my-accent
+  )
+));
+// Se o tema for para uso em todos componentes use este mixin
+ @include mat.all-component-themes($my-theme);
+// vc pode criar temas para botões e assim por diante.
+
+
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  }

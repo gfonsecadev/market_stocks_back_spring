@@ -1,0 +1,44 @@
+
+.form{
+ width:80vw;
+ height: 60vh;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+mat-card-actions{
+  display: flex;
+  justify-content: space-around;
+}
+
+.error{
+  font-size: 0.7rem;
+  color: rgb(198, 33, 44);
+  margin-top: -1rem;
+}
+
+.toobar-profit{
+  background-color: rgb(42, 42, 43);
+}
+
+.add-profit{
+  max-height: 25%;
+  overflow: auto;
+}
+
+.profit{
+  background-color: rgb(227, 229, 224);
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.profit > mat-form-field{
+  width: 40%;
+}
+
+mat-toolbar-row{
+  justify-content: space-between;
+}

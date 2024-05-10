@@ -1,0 +1,26 @@
+@mixin format($child,$grow){
+  mat-header-row > mat-header-cell:nth-child(#{$child}),
+  mat-row > mat-cell:nth-child(#{$child}){
+   flex-grow:$grow;
+   display: flex;
+   justify-content:center;
+   padding:0;
+  }
+}
+//include para utilizar o mixin
+@include format(1,1);
+@include format(2,3 );
+@include format(3,2);
+@include format(4,2);
+
+mat-table{
+  min-width:300px;
+}
+
+.edit,.delete{
+  padding: 0;
+  min-width: 10px;
+}
+
+
+
