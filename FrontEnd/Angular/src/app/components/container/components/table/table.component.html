@@ -13,7 +13,7 @@
       <mat-header-cell *matHeaderCellDef>
         Nome
       </mat-header-cell>
-      <mat-cell *matCellDef="let stock">
+      <mat-cell  *matCellDef="let stock">
          {{stock.name}}
          <mat-icon style="font-size: 18px; margin-left: 3px;" aria-hidden="false" aria-label="Example home icon" [fontIcon]="stock.category | icon"></mat-icon>
         <!-- esse icone acima  será a resposta do pipe icon criado, que dará o nome de acordo com a categoria -->

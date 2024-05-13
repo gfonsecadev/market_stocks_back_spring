@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MyStocksService } from '../../services/my-stocks.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Stock } from '../../models/stock';
 import { Profit } from '../../models/profit';
 import { ValidateFieldsService } from 'src/app/share/validator/validate-fields.service';
@@ -14,10 +14,7 @@ import { ValidateFieldsService } from 'src/app/share/validator/validate-fields.s
   styleUrls: ['./form-main.component.scss']
 })
 export class FormMainComponent implements OnInit{
-
-
-
-
+  headerTitle:string='';
   service:MyStocksService;
   //form:FormGroup;// essa será a instância para manipular formularios reativos
   form!:FormGroup;
@@ -26,6 +23,7 @@ export class FormMainComponent implements OnInit{
 
   constructor(private formBuilder:NonNullableFormBuilder,
               private routeActive:ActivatedRoute,
+              private router:Router,
               private location:Location,
               service:MyStocksService,
               private snackBar: MatSnackBar,
@@ -53,7 +51,14 @@ export class FormMainComponent implements OnInit{
     })
   }
 
-
+  //função para retornar o texto que será exibido no cabeçalho do formulário de acordo se for adição ou edição de ativo
+  header(){
+    if(this.router.url.includes('edit')){
+      return "Editar ativo";
+    }else{
+      return "Adicionar ativo";
+    }
+  }
 
 
   //Cria formGroup para o ArrayGroup. Se nada vier como parametro ou seja é uma nova inserção será carregado um formGroup vazio, agora se for edição de dados o resolver nos retornará um array de profits e para cada array será criado um formGroup devido a iteração do objeto recebido.
