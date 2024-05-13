@@ -15,7 +15,7 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let stock">
          {{stock.name}}
-         <mat-icon aria-hidden="false" aria-label="Example home icon" [fontIcon]="stock.category | icon"></mat-icon>
+         <mat-icon style="font-size: 18px; margin-left: 3px;" aria-hidden="false" aria-label="Example home icon" [fontIcon]="stock.category | icon"></mat-icon>
         <!-- esse icone acima  será a resposta do pipe icon criado, que dará o nome de acordo com a categoria -->
       </mat-cell>
     </ng-container>
@@ -43,12 +43,16 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let stock">
-          <button  class="edit" mat-button  color="primary" (click)="emitSearchEditStock(stock)">
+           <button class="show" mat-button  (click)="emitShowStock(stock)" >
+             <mat-icon>visibility</mat-icon>
+          </button>
+          <button  class="edit" mat-button  color="warn" (click)="emitSearchEditStock(stock)">
             <mat-icon>edit</mat-icon>
           </button>
           <button class="delete" mat-button color="warn" (click)="emitDeleteStock(stock)" >
             <mat-icon>delete</mat-icon>
           </button>
+
       </mat-cell>
 
    </ng-container>

@@ -9,10 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShareModule } from 'src/app/share/share.module';
 import { FormMainComponent } from './components/form/form-main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardShowComponent } from './components/card-show/card-show.component';
 
 //Modulo para carregar os componentes do container
 @NgModule({
-  declarations: [MainContainerComponent, TableComponent, FormMainComponent],
+  declarations: [MainContainerComponent, TableComponent, FormMainComponent, CardShowComponent],
   imports: [
     CommonModule,
     MainContainerRoutingModule,//Modulo principal do mainContainer que será importado pelo app

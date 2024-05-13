@@ -1,0 +1,58 @@
+<mat-card class="mat-elevation-z8">
+
+  <mat-toolbar color="primary">Informações sobre o ativo</mat-toolbar>
+
+<mat-card-content>
+  <form [formGroup]="form" class="form"><!-- responsavel por linkar com a variavel form -->
+
+      <mat-form-field >
+        <input  matInput placeholder="Nome" #name readonly  formControlName="name"><!-- responsavel por linkar o input com a variavel  -->
+      </mat-form-field>
+
+       <mat-form-field >
+        <input matInput placeholder="Preço Médio"  readonly formControlName="price_medium" >
+      </mat-form-field>
+
+
+      <mat-form-field>
+          <mat-label>Área de atuação</mat-label>
+          <input  matInput   readonly  formControlName="category"> <!-- responsavel por linkar o input com a variavel  -->
+      </mat-form-field>
+
+      <mat-toolbar class="lucros_toolbar">
+        <mat-toolbar-row >
+          <span>Lucros recebidos</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+
+
+      <div class="profits" formArrayName="profits"  >
+        <div *ngIf="show() ; else nothing">
+        <mat-card *ngFor="let profit of iterarArray(); let i =index" [formGroupName]="i">
+
+
+          <mat-form-field class="type">
+              <mat-label>Tipo de ganho recebido</mat-label>
+              <input  matInput   readonly  formControlName="type"><!-- responsavel por linkar o input com a variavel  -->
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Valor recebido"  formControlName="valueDistributed" readonly>
+          </mat-form-field>
+
+
+        </mat-card>
+        </div>
+        <ng-template #nothing><p style="text-align: center;">Nenhum lucro registrado para este ativo</p></ng-template>
+      </div>
+
+
+      <mat-card-actions>
+        <button  mat-raised-button  (click)="backPag()">Voltar</button>
+      </mat-card-actions>
+
+    </form>
+</mat-card-content>
+
+</mat-card>

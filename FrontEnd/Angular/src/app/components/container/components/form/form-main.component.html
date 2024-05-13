@@ -31,13 +31,13 @@
             <mat-option value="educ" >Educação</mat-option>
             <mat-option value="eletr" >Elétrica</mat-option>
             <mat-option value="mall" >shopping</mat-option>
-            <mat-option value="miniSteal" >Mineração e Siderúrgia</mat-option>
+            <mat-option value="miniSteel" >Mineração e Siderúrgia</mat-option>
 
           </mat-select>
           <mat-error>{{validatorService.formControlError(form,"category")}}</mat-error>
         </mat-form-field>
 
-        <mat-toolbar class="toobar-profit">
+        <mat-toolbar color="primary">
           <mat-toolbar-row>
             <span>Adicionar lucros recebidos</span>
             <button mat-mini-fab (click)="addProfitField()" color="primary" aria-label="Adicionar lucro recebido">

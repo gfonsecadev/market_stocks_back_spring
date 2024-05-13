@@ -3,6 +3,7 @@
  <div class="table-pag"  *ngIf="stocks$ | async as stocks; else progress" >
       <app-table
       [stocks]="stocks.stockPag"
+       (show)="showStock($event)"
        (add)="addStock()"
        (edit)="searchEditStock($event)"
        (delete)="deleteStock($event)">

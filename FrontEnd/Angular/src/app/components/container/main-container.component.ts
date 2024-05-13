@@ -55,6 +55,10 @@ export class MainContainerComponent {
       this.dialog.open(DialogErrorComponent,{data:mensage})
      }
 
+     showStock(stock:Stock){
+        this.router.navigate(['show',stock.id],{relativeTo:this.routeActive})
+     }
+
      addStock(){
       this.router.navigate(['new'],{relativeTo:this.routeActive})
       //será redirecionado para a rota atual definida no arquivo de rota + new.

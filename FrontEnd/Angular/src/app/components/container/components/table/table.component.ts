@@ -12,6 +12,7 @@ export class TableComponent implements OnInit {
 
   displayedColumns=['id','name','preco_medio','actions']// variavel com os nomes da coluna
   @Input() stocks:Stock[]=[];
+  @Output() show=new EventEmitter(false);
   @Output() add=new EventEmitter(false);//parametro se será asssincrono ou não.
   @Output() edit=new EventEmitter(false);
   @Output() delete=new EventEmitter(false);
@@ -20,6 +21,10 @@ export class TableComponent implements OnInit {
 
   constructor( public router:Router,//objeto de roteamento
                public routeActive:ActivatedRoute){}//dados da rota ativa
+
+   emitShowStock(stock:Stock){
+      this.show.emit(stock);
+   }
    emitAddStock(){
       this.add.emit(true);
       //será enviado para o componente pai para disparar o evento.

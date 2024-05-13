@@ -17,9 +17,20 @@ mat-table{
   min-width:300px;
 }
 
-.edit,.delete{
-  padding: 0;
-  min-width: 10px;
+.edit,.show,.delete{
+  min-width: 15px
+}
+
+.show {
+  color: rgb(24, 11, 206);
+}
+
+.edit {
+  color: green;
+}
+
+.delete {
+  color: rgb(234, 25, 25);
 }
 
 
